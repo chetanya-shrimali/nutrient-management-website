@@ -14,10 +14,12 @@ class Disease(models.Model):
 
 
 class People(models.Model):
-    people_types = (('athelete', 'athelete'), ('normal', 'normal'), ('pregnant-lady', 'pregnant-lady'))
+    people_types = (('athelete', 'athelete'), ('normal', 'normal'),
+                    ('pregnant-lady', 'pregnant-lady'))
 
     nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
-    type = models.CharField(max_length=20, choices=people_types, default='athelete')
+    type = models.CharField(max_length=20, choices=people_types,
+                            default='athelete')
 
 
 class Food(models.Model):
