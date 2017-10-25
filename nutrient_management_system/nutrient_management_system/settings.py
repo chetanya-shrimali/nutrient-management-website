@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'drop_a_note.apps.DropANoteConfig',
     'nutrients_info.apps.NutrientsInfoConfig',
     'users.apps.UsersConfig',
+    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [
@@ -114,5 +115,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/'),
+)
 STATIC_URL = '/static/'

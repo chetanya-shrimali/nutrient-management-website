@@ -1,4 +1,4 @@
-{% load staticfiles i18n %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +17,21 @@
 
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700'
           rel='stylesheet' type='text/css'>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
     <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
     <script src="{% static 'js/respond.min.js' %}"></script>
+    <!-- MAIN JS -->
+    <script src="{% static 'js/main.js' %}"></script>
 </head>
 <body>
 <div id="fh5co-wrap">
@@ -32,12 +40,12 @@
             <nav class="fh5co-main-nav">
                 <ul>
                     <li class="fh5co-active"><a
-                            href="index.html"><span>Home</span></a></li>
-                    <li><a href="services.html"><span>Services</span></a></li>
+                            href="{% url 'home:home' %}"><span>Home</span></a></li>
+                    <li><a href="{% url 'nutrients_info:info' %}"><span>Services</span></a></li>
                     <li>
-                        <a href="../about_us/templates/about.html"><span>About</span></a>
+                        <a href="{% url 'about_us:about' %}"><span>About</span></a>
                     </li>
-                    <li><a href="../drop_a_note/templates/contact.html"><span>Contact</span></a>
+                    <li><a href="{% url 'contact:contact' %}"><span>Contact</span></a>
                     </li>
                 </ul>
             </nav>
@@ -96,12 +104,7 @@
         </div>
     </div>
 </footer>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
-<!-- MAIN JS -->
-<script src="{% static 'js/main.js' %}"></script>
+
+
 </body>
 </html>
