@@ -1,11 +1,17 @@
+from django.contrib import auth
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from home.forms import UserForm
+from django.contrib.auth import logout
+from users.forms import LoginForm
 
 
 def users(request):
+    print(str(request.user.username) + " Hi dear u")
     return render(request, 'services.html')
 
 
@@ -28,9 +34,30 @@ class UserFormView(View):
             user.set_password(password)
             user.save()
 
+            print(username + ' ' + password)
+
             user = authenticate(username=username, password=password)
 
             if user is not None:
                 login(request, user)
                 return redirect('home:home')
         return render(request, self.template_name, {'form': form})
+
+
+@csrf_protect
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        print(username + "  " + password)
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home:home')
+        return HttpResponse("invalid credentials")
+    else:
+        form = LoginForm()
+        return render(request, 'registration_form.html', {'form': form})
+
+
+

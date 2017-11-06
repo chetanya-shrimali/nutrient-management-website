@@ -100,4 +100,4 @@ ENV/
 # mypy
 .mypy_cache/
 .idea/
-
+nutrient_management_system/.idea
