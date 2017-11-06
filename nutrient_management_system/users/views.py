@@ -60,4 +60,6 @@ def user_login(request):
         return render(request, 'registration_form.html', {'form': form})
 
 
-
+def user_logout(request):
+    logout(request)
+    return redirect('home:home')
