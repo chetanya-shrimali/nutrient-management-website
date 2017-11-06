@@ -3,10 +3,6 @@ from django.views import View
 from drop_a_note.forms import ContactForm
 
 
-def contact(request):
-    return render(request, 'contact.html')
-
-
 class ContactFormView(View):
     form_class = ContactForm
     template_name = 'contact.html'
