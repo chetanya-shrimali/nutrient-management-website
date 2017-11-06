@@ -30,7 +30,6 @@ class ArticleFormView(View):
             post.user = self.request.user
             print(post)
             form.save()
-
             print(post)
 
             if post is not None:

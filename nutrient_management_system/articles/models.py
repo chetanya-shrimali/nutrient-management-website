@@ -8,15 +8,24 @@ class Article(models.Model):
     content = models.CharField(max_length=1000)
     publisher = models.CharField(max_length=50)
     date = models.DateField()
+    
+    def __str__(self):
+        return self.title + ' -> ' + self.publisher
 
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return self.article.title +  ' ->' +  self.user.username
 
 
 class Like(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     likes = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return self.article.title + ' -> ' + self.user.username
