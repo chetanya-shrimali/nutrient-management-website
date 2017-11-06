@@ -23,13 +23,15 @@ class ArticleFormView(View):
         print(self.request.user)
         if form.is_valid():
             post = form.save(commit=False)
-
             title = form.cleaned_data['title']
             content = form.cleaned_data['content']
             date = form.cleaned_data['date']
             publisher = form.cleaned_data['publisher']
-            form.user = self.request.user
+            post.user = self.request.user
+            print(post)
             form.save()
+
+            print(post)
 
             if post is not None:
                 return redirect('articles:articles')

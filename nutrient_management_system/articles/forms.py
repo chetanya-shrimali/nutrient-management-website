@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 
 class ArticleForm(forms.ModelForm):
-
     class Meta:
         model = Article
-        fields = ['title', 'content', 'date', 'publisher']
+        fields = ['title', 'content', 'date', 'publisher', ]
