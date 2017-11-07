@@ -45,10 +45,11 @@
             <a href="{% url 'articles:articles' %}"><span>Articles</span></a>
           </li>
           <li>
-            <a href="{% url 'about_us:about' %}"><span>About</span></a>
+            <a
+                href="{% url 'about_us:about' %}"><span>About</span></a>
           </li>
           <li>
-            <a href="{% url 'contact:contact' %}"><span>Contact</span></a>
+            <a href="{% url 'contact:contact' %}"><span>Leave A Note</span></a>
           </li>
           <li>
             {% if request.user.username != '' %}
@@ -118,7 +119,23 @@
     </div>
   </div>
 </footer>
+<script>
+  $(document).ready(function () {
+    $('.fh5co-main-nav li').click(function(event){
+        //remove all pre-existing active classes
+        $('.fh5co-active').removeClass('fh5co-active');
 
+        //add the active class to the link we clicked
+        $(this).addClass('fh5co-active');
 
+        //Load the content
+        //e.g.
+        //load the page that the link was pointing to
+        //$('#content').load($(this).find(a).attr('href'));
+
+        event.preventDefault();
+    });
+  });
+</script>
 </body>
 </html>
