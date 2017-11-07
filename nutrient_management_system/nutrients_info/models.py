@@ -36,7 +36,7 @@ class Food(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nutrient.name + ' -> ' + self.name
+        return self.name
 
 
 class Geographical(models.Model):
