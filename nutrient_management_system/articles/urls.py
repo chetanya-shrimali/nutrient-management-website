@@ -1,6 +1,5 @@
-from django.conf.urls import url
-
 from articles import views
+from django.conf.urls import url
 
 app_name = 'articles'
 
