@@ -59,18 +59,29 @@ class FoodFoundSeason(models.ForeignKey):
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.food.name + ' -> ' + self.season.name
 
 
 class FoodFoundGeographical(models.Model):
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     geographical = models.ForeignKey(Geographical, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.food.name + ' -> ' + self.geographical.name
+
 
 class NutrientFoundFood(models.Model):
     nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nutrient.name + ' -> ' + self.food.name
+
 
 class NutrientGivenPeople(models.Model):
     nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
     people = models.ForeignKey(People, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nutrient.name + ' -> ' + self.people.type
