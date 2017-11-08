@@ -10,22 +10,17 @@ class Nutrient(models.Model):
 
 
 class Disease(models.Model):
+    intake_types = (('lack', 'lack'), ('surplus', 'surplus'))
     nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    lack = models.BooleanField(default=False)
-    surplus = models.BooleanField(default=False)
+    type = models.CharField(max_length=10, choices=intake_types,
+                            default='lack')
 
     def __str__(self):
         return self.nutrient.name + ' -> ' + self.name
 
 
 class People(models.Model):
-    # people_types = (('athelete', 'athelete'), ('normal', 'normal'),
-    #                 ('pregnant-lady', 'pregnant-lady'))
-
-    # nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
-    # type = models.CharField(max_length=20, choices=people_types,
-    #                         default='athelete')
     type = models.CharField(max_length=50, default='type here')
 
     def __str__(self):
