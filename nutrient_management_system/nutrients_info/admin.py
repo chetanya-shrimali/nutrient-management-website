@@ -1,8 +1,10 @@
 from django.contrib import admin
 
-from .models import Food, Nutrient, Disease, Geographical, People, Season, \
-    FoodFoundGeographical, FoodFoundSeason, NutrientFoundFood, \
-    NutrientGivenPeople
+from nutrients_info.models import Food, Nutrient, Disease, Geographical, \
+    People, Season, \
+    FoodFoundInGeographical, NutrientFoundInFood, NutrientGivenToPeople, \
+    FoodFoundInSeason
+
 
 admin.site.register(Food)
 admin.site.register(Nutrient)
@@ -10,7 +12,8 @@ admin.site.register(Disease)
 admin.site.register(Geographical)
 admin.site.register(People)
 admin.site.register(Season)
-admin.site.register(FoodFoundSeason)
-admin.site.register(FoodFoundGeographical)
-admin.site.register(NutrientFoundFood)
-admin.site.register(NutrientGivenPeople)
+admin.site.register(FoodFoundInGeographical)
+admin.site.register(FoodFoundInSeason)
+admin.site.register(NutrientGivenToPeople)
+admin.site.register(NutrientFoundInFood)
+

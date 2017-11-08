@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from .models import Disease, Food, Nutrient, Season, People, Geographical
+from nutrients_info.models import Disease, Food, Nutrient, Season, People, \
+    Geographical
 
 
 def info(request):
