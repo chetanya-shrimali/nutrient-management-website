@@ -1,7 +1,9 @@
 from articles.forms import ArticleForm
 from articles.models import Article
+from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import UpdateView, DeleteView
 
 
 def articles(request):
@@ -16,7 +18,7 @@ def full_article(request, pk):
 
 class ArticleFormView(View):
     form_class = ArticleForm
-    template_name = 'registration_form.html'
+    template_name = 'article_form.html'
 
     def get(self, request):
         form = self.form_class(None)
@@ -39,3 +41,13 @@ class ArticleFormView(View):
             if post is not None:
                 return redirect('articles:articles')
         return render(request, self.template_name, {'form': form})
+
+
+class ArticleUpdate(UpdateView):
+    model = Article
+    fields = ['title', 'content', 'publisher', 'date']
+
+
+class ArticleDelete(DeleteView):
+    model = Article
+    success_url = reverse_lazy('articles:articles')
