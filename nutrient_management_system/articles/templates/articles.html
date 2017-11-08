@@ -23,23 +23,25 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-
-          <div class="fh5co-icon">
-            <i class="icon-strategy"></i>
-          </div>
-          <div class="fh5co-text article-box">
-            <div class="text-center"><h1>Strategy</h1>
-              <hr>
-            </div>
-            <span><small>Date</small></span><span style="float: right;">
-            <small>Name</small>
+          {% for article in all_articles %}
+            <div class="fh5co-text article-box">
+              <div class="text-center"><h1>{{ article.title }}</h1>
+                <hr>
+              </div>
+              <span><small>{{ article.date }}</small></span><span
+                style="float: right;">
+              <small>Published by:</small><br>
+            <small>{{ article.publisher }}</small>
           </span>
-            <p>Far far away, behind the word mountains, far
-              from the countries Vokalia and Consonantia,Name
-              there live the blind texts. </p>
-            <span><small> Edit</small></span> | <span><small>Delete</small></span><span style="float: right;">
-            <small>Read More</small>
-          </div>
+              <div class="article-content">
+                {{ article.content }}
+              </div>
+              <span><small><a href="#">Edit</a></small></span> | <span><small><a href="#">Delete</a></small></span><span
+                style="float: right;">
+              <small><a href="{% url 'articles:full_article' article.id %}">Read More</a></small>
+            </span>
+            </div>
+          {% endfor %}
         </div>
       </div>
       <div class="col-md-2"></div>

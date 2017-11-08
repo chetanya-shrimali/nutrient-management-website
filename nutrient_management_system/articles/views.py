@@ -1,13 +1,17 @@
-from django.contrib.auth import authenticate, login
+from articles.forms import ArticleForm
+from articles.models import Article
 from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth.models import user_logged_in
-from articles.forms import ArticleForm
-from .models import Article
 
 
 def articles(request):
-    return render(request, 'articles.html')
+    all_articles = Article.objects.all()
+    return render(request, 'articles.html', {'all_articles': all_articles})
+
+
+def full_article(request, pk):
+    article = Article.objects.get(pk=pk)
+    return render(request, 'full_article.html', {'article': article})
 
 
 class ArticleFormView(View):
