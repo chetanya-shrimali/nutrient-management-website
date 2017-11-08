@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="fh5co-hero"
+       style="background-image: url(images/hero_2.jpg);"
+       data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div
+            class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+          <div class="fh5co-intro fh5co-table-cell">
+            <h1 class="text-center">Nutrients Info</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {#  <img src="images/hero_1.jpg"#}
+  {#                     alt="Free HTML5 by FreeHTML5.co"#}
+  {#                     class="img-responsive">#}
+  <div class="fh5co-section">
+    <div class="container">
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#nutrients">Nutrients</a>
+        </li>
+        <li><a data-toggle="tab" href="#people">People</a></li>
+        <li><a data-toggle="tab" href="#geographical">Geographical</a></li>
+        <li><a data-toggle="tab" href="#seasonal">Seasonal</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="nutrients" class="tab-pane fade in active">
+          <br><br>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                  <li class="active"><a data-toggle="pill"
+                                        href="#home">Home</a>
+                  </li>
+                  {% for nutrient in nutrients %}
+                    <li><a data-toggle="pill"
+                           href="#{{ nutrient.id }}">{{ nutrient.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-9">
+                <div class="tab-content">
+                  <div id="home" class="tab-pane fade in active">
+                    <h3>HOME</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing
+                      elit, sed
+                      do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.</p>
+                  </div>
+                  {% for nutrient in nutrients %}
+                    <div id="{{ nutrient.id }}" class="tab-pane fade">
+                      <div class="text-center "><h3>{{ nutrient.name }}</h3>
+                      </div>
+                      <div class="col-md-4">
+                        <p>{{ nutrient.avg_intake }} Calories</p>
+                      </div>
+                      <div class="col-md-4">
+                        <ul>
+                          {% for disease in diseases %}
+                            {% if disease.nutrient == nutrient %}
+                              <li><p>{{ disease.name }}</p></li>
+                            {% endif %}
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      <div class="col-md-4">
+                        <ul>
+                          {% for food in foods %}
+                            {% if food.nutrient == nutrient %}
+                              {{ food.name }},
+                            {% endif %}
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="clearfix visible-lg"></div>
+            </div>
+          </div>
+        </div>
+        <div id="people" class="tab-pane fade in">
+          <br><br>
+          <div class="container-fluid">
+            <div class="row">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>People</th>
+                  <th>Foods</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for people in peoples %}
+                  <tr>
+                    <td>{{ people.type }}</td>
+                    <td>{{ people.nutrient.name }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="geographical" class="tab-pane fade in">
+          <br><br>
+          <div class="container-fluid">
+            <div class="row">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Foods</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for geographical in geographicals %}
+                  <tr>
+                    <td>{{ geographical.name }}</td>
+                    <td>{{ geographical.food.name }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="seasonal" class="tab-pane fade in">
+          <br><br>
+          <div class="container-fluid">
+            <div class="row">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Seasonal</th>
+                  <th>Foods</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for seasonal in seasonals %}
+                  <tr>
+                    <td>{{ seasonal.name }}</td>
+                    <td>{{ seasonal.food.name }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}
