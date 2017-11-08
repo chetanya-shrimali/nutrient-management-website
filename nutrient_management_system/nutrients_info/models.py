@@ -23,7 +23,7 @@ class People(models.Model):
     people_types = (('athelete', 'athelete'), ('normal', 'normal'),
                     ('pregnant-lady', 'pregnant-lady'))
 
-    nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
+    # nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
     type = models.CharField(max_length=20, choices=people_types,
                             default='athelete')
 
@@ -32,7 +32,7 @@ class People(models.Model):
 
 
 class Food(models.Model):
-    nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
+    # nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -47,9 +47,30 @@ class Geographical(models.Model):
         return self.name
 
 
-class Seasonal(models.Model):
+class Season(models.Model):
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
+
+class FoodFoundSeason(models.ForeignKey):
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+
+
+
+class FoodFoundGeographical(models.Model):
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    geographical = models.ForeignKey(Geographical, on_delete=models.CASCADE)
+
+
+class NutrientFoundFood(models.Model):
+    nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+
+
+class NutrientGivenPeople(models.Model):
+    nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
+    people = models.ForeignKey(People, on_delete=models.CASCADE)
