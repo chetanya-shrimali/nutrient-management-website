@@ -8,6 +8,12 @@ from django.views.generic import UpdateView, DeleteView
 
 def articles(request):
     all_articles = Article.objects.all()
+    from django.core.mail import EmailMessage
+    email = EmailMessage('django mail', "Hey, It's django mail",
+                         to=['chetanyashrimalie5@gmail.com',
+                             'nkchoudhary696@gmail.com'])
+    email.send()
+    print('reached')
     return render(request, 'articles.html', {'all_articles': all_articles})
 
 

@@ -1,13 +1,35 @@
 {% extends 'base.html' %}
 {% block title %} Register {% endblock %}
 {% block body %}
-    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% include 'music/form_template.html' %}
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Submit</button>
-            </div>
+
+  <div class="fh5co-hero"
+       style="background-image: url(images/hero_2.jpg);"
+       data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div
+            class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+          <div class="fh5co-intro fh5co-table-cell">
+            <h1 class="text-center">Article Form</h1>
+          </div>
         </div>
-    </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="fh5co-section">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          {% include 'generic_form.html' %}
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+
+
 {% endblock %}

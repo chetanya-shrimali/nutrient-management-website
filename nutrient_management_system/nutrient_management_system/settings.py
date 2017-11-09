@@ -25,6 +25,11 @@ SECRET_KEY = '_r_#ri&wo=0kaoe3+n_=x#$qh+^$(w7dg9t1l(9fq^j!t@0h)-'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = "chetanyashrimalie5@gmail.com"
+EMAIL_HOST_PASSWORD = 'cenanation'
+EMAIL_PORT = 587
 
 # Application definition
 
