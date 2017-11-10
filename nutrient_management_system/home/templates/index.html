@@ -60,68 +60,39 @@
 
   <div class="fh5co-section">
     <div class="container">
-
       <div class="row">
-        <div class="col-md-6">
-          <div class="fh5co-feature animate-box"
-               data-animate-effect="fadeInLeft">
-            <div class="fh5co-icon">
-              <i class="icon-strategy"></i>
-            </div>
-            <div class="fh5co-text">
-              <h3>Strategy</h3>
-              <p>Far far away, behind the word mountains, far
-                from the countries Vokalia and Consonantia,
-                there live the blind texts. </p>
-            </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="text-center"><h2>Little about website</h2></div>
+          <div class="col-md-8">
+            <span><a href="{% url 'articles:add_article' %}">Add New</a></span>
+            <br><br>
+            {% for article in articles %}
+              <div class="fh5co-text article-box-home">
+                <div class="text-center"><h1>{{ article.title }}</h1>
+                  <hr>
+                </div>
+                <span><small>{{ article.date }}</small></span><span
+                  style="float: right;">
+              <small>Published by:</small><br>
+            <small>{{ article.publisher }}</small>
+          </span>
+                <div class="article-content">
+                  {{ article.content }}
+                </div>
+                <span><small><a
+                    href="{% url 'articles:edit_article' article.id %}">Edit</a></small></span>
+                | <span><small><a
+                  href="{% url 'articles:delete_article' article.id %}">Delete</a></small></span><span
+                  style="float: right;">
+              <small><a href="{% url 'articles:full_article' article.id %}">Read More</a></small>
+            </span>
+              </div>
+            {% endfor %}
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="fh5co-feature animate-box"
-               data-animate-effect="fadeInLeft">
-            <div class="fh5co-icon">
-              <i class="icon-telescope"></i>
-            </div>
-            <div class="fh5co-text">
-              <h3>Explore</h3>
-              <p>Far far away, behind the word mountains, far
-                from the countries Vokalia and Consonantia,
-                there live the blind texts. </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="fh5co-feature animate-box"
-               data-animate-effect="fadeInLeft">
-            <div class="fh5co-icon">
-              <i class="icon-circle-compass"></i>
-            </div>
-            <div class="fh5co-text">
-              <h3>Direction</h3>
-              <p>Far far away, behind the word mountains, far
-                from the countries Vokalia and Consonantia,
-                there live the blind texts. </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="fh5co-feature animate-box"
-               data-animate-effect="fadeInLeft">
-            <div class="fh5co-icon">
-              <i class="icon-tools"></i>
-            </div>
-            <div class="fh5co-text">
-              <h3>Expertise</h3>
-              <p>Far far away, behind the word mountains, far
-                from the countries Vokalia and Consonantia,
-                there live the blind texts. </p>
-            </div>
-          </div>
-        </div>
-
+        <div class="col-md-2"></div>
       </div>
-
     </div>
   </div>
 
@@ -144,16 +115,10 @@
 
   <div class="fh5co-section">
     <div class="container">
-
       <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6">
-              <h2>Made With Love</h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="text-center"><h2>Little about website</h2></div>
           <p>Even the all-powerful Pointing has no control about the
             blind texts it is an almost unorthographic life One day
             however a small line of blind text by the name of Lorem
@@ -163,16 +128,8 @@
             devious Semikoli, but the Little Blind Text didn’t
             listen.</p>
         </div>
-        <div class="col-md-6">
-          <p>She packed her seven versalia, put her initial into the
-            belt and made herself on the way. When she reached the
-            first hills of the Italic Mountains, she had a last
-            view back on the skyline of her hometown
-            Bookmarksgrove, the headline of Alphabet Village and
-            the subline of her own road, the Line Lane.</p>
-        </div>
+        <div class="col-md-2"></div>
       </div>
-
     </div>
   </div>
 
