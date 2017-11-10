@@ -6,10 +6,10 @@ from home.forms import UserForm
 
 def home(request):
     article_model = apps.get_model('articles.Article')
-    print(article_model)
     articles = article_model.objects.all().order_by('-id')[:3]
-    print(articles)
-    return render(request, 'index.html', {'articles': articles})
+    drop_a_note_model = apps.get_model('drop_a_note.Note')
+    notes = drop_a_note_model.objects.all().order_by('-id')[:3]
+    return render(request, 'index.html', {'articles': articles, 'notes': notes})
 
 
 class UserFormView(View):

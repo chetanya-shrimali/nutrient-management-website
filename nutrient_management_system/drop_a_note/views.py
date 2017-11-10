@@ -2,6 +2,12 @@ from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.views import View
 from drop_a_note.forms import ContactForm
+from drop_a_note.models import Note
+
+
+def feedbacks(request):
+    all_feedbacks = Note.objects.all()
+    return render(request, 'feedbacks.html', {'all_feedbacks': all_feedbacks})
 
 
 class ContactFormView(View):

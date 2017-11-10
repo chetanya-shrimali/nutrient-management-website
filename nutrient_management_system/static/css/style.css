@@ -47,6 +47,15 @@ body {
     overflow-y: hidden;
 }
 
+.feedback-content-home{
+    border-bottom: 1px solid rgba(72, 72, 72, 0.5);
+    height: 100px;
+    width: 100%;
+    word-wrap:break-word;
+    display: block;
+    overflow-y: hidden;
+}
+
 hr {
     margin: 10px;
 }
