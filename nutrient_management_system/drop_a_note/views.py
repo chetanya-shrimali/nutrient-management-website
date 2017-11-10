@@ -1,3 +1,4 @@
+from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.views import View
 from drop_a_note.forms import ContactForm
@@ -17,9 +18,21 @@ class ContactFormView(View):
         if form.is_valid():
             note = form.save(commit=False)
             name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
+            email_address = form.cleaned_data['email']
+            note_content = form.cleaned_data['note']
             form.save()
 
             if note is not None:
+                email = EmailMessage('Regarding feedback',
+                                     email_address + "\n\n" + note_content,
+                                     to=['chetanyashrimalie5@gmail.com',
+                                         'nkchoudhary696@gmail.com'])
+                email.send()
+
+                email = EmailMessage('Regarding feedback',
+                                     "Hey " + name + ",\n\n" + "We have successfully recieved your note!!",
+                                     to=[email_address])
+                email.send()
+                print('reached')
                 return redirect('contact:contact')
         return render(request, self.template_name, {'form': form})
