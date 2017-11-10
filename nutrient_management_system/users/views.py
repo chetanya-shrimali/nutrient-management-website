@@ -1,12 +1,10 @@
-from django.contrib import auth
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
-
+from django.views.decorators.csrf import csrf_protect
 from home.forms import UserForm
-from django.contrib.auth import logout
 from users.forms import LoginForm
 
 
@@ -17,7 +15,7 @@ def users(request):
 
 class UserFormView(View):
     form_class = UserForm
-    template_name = 'registration_form.html'
+    template_name = 'services.html'
 
     def get(self, request):
         form = self.form_class(None)
@@ -57,7 +55,7 @@ def user_login(request):
         return HttpResponse("invalid credentials")
     else:
         form = LoginForm()
-        return render(request, 'registration_form.html', {'form': form})
+        return render(request, 'user_login.html', {'form': form})
 
 
 def user_logout(request):

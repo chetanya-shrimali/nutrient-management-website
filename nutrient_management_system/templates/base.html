@@ -56,7 +56,7 @@
               <a href="{% url 'users:user_logout' %}"><span>
                 {{ request.user.username }}</span></a>
             {% else %}
-              <a href="{% url 'users:user' %}"><span>
+              <a href="{% url 'users:register' %}"><span>
                 Register/login</span></a>
             {% endif %}
           </li>
@@ -101,20 +101,6 @@
           <li><a href="#"><i class="icon-google"></i> <span>Google Plus</span></a>
           </li>
         </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 fh5co-copyright text-center">
-        <p>
-          <small>&copy; 2016 Free HTML5 Simple. All Rights
-            Reserved.
-          </small>
-          <small>Made with care by <a href="http://freehtml5.co/"
-                                      target="_blank">FreeHTML5.co</a>
-            Demo Images: <a href="http://unsplash.com"
-                            target="_blank">Unsplash</a>
-          </small>
-        </p>
       </div>
     </div>
   </div>
