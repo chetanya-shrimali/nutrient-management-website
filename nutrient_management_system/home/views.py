@@ -9,7 +9,8 @@ def home(request):
     articles = article_model.objects.all().order_by('-id')[:3]
     drop_a_note_model = apps.get_model('drop_a_note.Note')
     notes = drop_a_note_model.objects.all().order_by('-id')[:3]
-    return render(request, 'index.html', {'articles': articles, 'notes': notes})
+    return render(request, 'index.html',
+                  {'articles': articles, 'notes': notes})
 
 
 class UserFormView(View):
