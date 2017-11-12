@@ -12,9 +12,9 @@
         <div
             class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
           <div class="fh5co-intro fh5co-table-cell">
-            <h1 class="text-center"></h1>
+            <h1 class="text-center">Nutri-Health</h1>
             <p>
-              Welcome to the Nutri-Health
+              A Nutrition Management Website
             </p>
           </div>
         </div>
@@ -83,16 +83,18 @@
             <div class="article-content">
               {{ article.content }}
             </div>
+            {% if request.user.id == article.user.id %}
             <span><small><a
                 href="{% url 'articles:edit_article' article.id %}">Edit</a></small></span>
-            | <span><small><a
-              href="{% url 'articles:delete_article' article.id %}">Delete</a></small></span><span
-              style="float: right;">
+            |<span><small><a
+              href="{% url 'articles:delete_article' article.id %}">Delete</a></small></span>
+            <span style="float: left;">
+              {% endif %}
               <small><a href="{% url 'articles:full_article' article.id %}">Read More</a></small>
-            </span>
+              </span>
           </div>
           {% endfor %}
-          <div class="float-right"><a href="{% url 'articles:articles' %}">SEE
+          <div><a href="{% url 'articles:articles' %}">SEE
             MORE</a></div>
         </div>
       </div>
