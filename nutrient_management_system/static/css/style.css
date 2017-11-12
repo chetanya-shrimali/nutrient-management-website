@@ -36,6 +36,8 @@ body {
     border-radius: 2px;
     box-shadow: 0 0 2px;
     text-align: center;
+    width: 50%;
+    margin: auto;
     margin-bottom: 20px;
 }
 
