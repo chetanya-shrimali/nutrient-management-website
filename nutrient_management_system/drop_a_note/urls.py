@@ -6,5 +6,5 @@ app_name = 'contact'
 
 urlpatterns = [
     url(r'^$', views.ContactFormView.as_view(), name='contact'),
-    url(r'^feedbacks/', views.feedbacks, name='feedbacks')
+    url(r'^feedbacks/', views.feedbacks, name='feedbacks'),
 ]
