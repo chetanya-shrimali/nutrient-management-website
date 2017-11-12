@@ -21,6 +21,7 @@ class Disease(models.Model):
 
 
 class People(models.Model):
+    nutrient = models.ManyToManyField(Nutrient)
     type = models.CharField(max_length=50, default='type here')
 
     def __str__(self):
@@ -28,7 +29,7 @@ class People(models.Model):
 
 
 class Food(models.Model):
-    # nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
+    nutrient = models.ManyToManyField(Nutrient)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -36,7 +37,7 @@ class Food(models.Model):
 
 
 class Geographical(models.Model):
-    # food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    food = models.ManyToManyField(Food)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -44,40 +45,31 @@ class Geographical(models.Model):
 
 
 class Season(models.Model):
-    # food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    food = models.ManyToManyField(Food)
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
-
-class FoodFoundInSeason(models.Model):
-    season = models.ForeignKey(Season, on_delete=models.CASCADE)
-    food = models.ForeignKey(Food, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.food.name + ' -> ' + self.season.name
-
-
-class FoodFoundInGeographical(models.Model):
-    food = models.ForeignKey(Food, on_delete=models.CASCADE)
-    geographical = models.ForeignKey(Geographical, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.food.name + ' -> ' + self.geographical.name
-
-
-class NutrientFoundInFood(models.Model):
-    nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
-    food = models.ForeignKey(Food, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nutrient.name + ' -> ' + self.food.name
-
-
-class NutrientGivenToPeople(models.Model):
-    nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
-    people = models.ForeignKey(People, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nutrient.name + ' -> ' + self.people.type
+# class FoodFoundInGeographical(models.Model):
+#     food = models.ForeignKey(Food, on_delete=models.CASCADE)
+#     geographical = models.ForeignKey(Geographical, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.food.name + ' -> ' + self.geographical.name
+#
+#
+# class NutrientFoundInFood(models.Model):
+#     nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
+#     food = models.ForeignKey(Food, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.nutrient.name + ' -> ' + self.food.name
+#
+#
+# class NutrientGivenToPeople(models.Model):
+#     nutrient = models.ForeignKey(Nutrient, on_delete=models.CASCADE)
+#     people = models.ForeignKey(People, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.nutrient.name + ' -> ' + self.people.type
