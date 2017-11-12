@@ -17,9 +17,6 @@
     </div>
   </div>
 
-  {#  <img src="images/hero_1.jpg"#}
-  {#                     alt="Free HTML5 by FreeHTML5.co"#}
-  {#                     class="img-responsive">#}
   <div class="fh5co-section">
     <div class="container">
 
@@ -52,10 +49,15 @@
                 <div class="tab-content">
                   <div id="home" class="tab-pane fade in active">
                     <h3>HOME</h3>
-                    <p>People look at food labels for different reasons. But whatever the reason,
-                        many consumers would like to know how to use this information more effectively
-                        and easily. The following label-building skills are intended to
-                        make it easier for you to use nutrition labels to make quick, informed food choices that contribute to a healthy diet..</p>
+                    <p>People look at food labels for different reasons. But
+                      whatever the reason,
+                      many consumers would like to know how to use this
+                      information more effectively
+                      and easily. The following label-building skills are
+                      intended to
+                      make it easier for you to use nutrition labels to make
+                      quick, informed food choices that contribute to a healthy
+                      diet..</p>
                   </div>
                   {% for nutrient in nutrients %}
                     <div id="{{ nutrient.id }}" class="tab-pane fade">
@@ -105,7 +107,10 @@
                 {% for people in peoples %}
                   <tr>
                     <td>{{ people.type }}</td>
-                    <td>{{ people.nutrient.name }}</td>
+                    <td>{% for food in people.nutrient.all %}
+                      {{ food.name }}
+                      {% endfor %}
+                    </td>
                   </tr>
                 {% endfor %}
                 </tbody>
@@ -128,7 +133,10 @@
                 {% for geographical in geographicals %}
                   <tr>
                     <td>{{ geographical.name }}</td>
-                    <td>{{ geographical.food.name }}</td>
+                    <td>{% for food in geographical.food.all %}
+                      {{ food.name }}
+                      {% endfor %}
+                    </td>
                   </tr>
                 {% endfor %}
                 </tbody>
@@ -148,10 +156,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for seasonal in seasons %}
+                {% for season in seasons %}
                   <tr>
-                    <td>{{ seasonal.name }}</td>
-                    <td>{{ seasonal.food.name }}</td>
+                    <td>{{ season.name }}</td>
+                    <td>{% for food in season.food.all %}
+                      {{ food.name }}
+                      {% endfor %}
+                    </td>
                   </tr>
                 {% endfor %}
                 </tbody>
