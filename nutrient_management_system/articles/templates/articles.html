@@ -37,13 +37,18 @@
               <div class="article-content">
                 {{ article.content }}
               </div>
-              <span><small><a
-                  href="{% url 'articles:edit_article' article.id %}">Edit</a></small></span>
-              | <span><small><a
-                href="{% url 'articles:delete_article' article.id %}">Delete</a></small></span><span
-                style="float: right;">
-              <small><a href="{% url 'articles:full_article' article.id %}">Read More</a></small>
-            </span>
+              <span>
+                <small><a href="{% url 'articles:full_article' article.id %}">Read More</a></small>
+              </span>
+              <span style="float: right;"><small>
+                {% if article.user_id == request.user.id %}
+                  <a
+                      href="{% url 'articles:edit_article' article.id %}">  &nbsp;Edit&nbsp;</a>
+                  </small></span>
+              </span>
+              <span style="float: right;"><small><a
+                  href="{% url 'articles:delete_article' article.id %}">Delete | </a></small></span>
+              {% endif %}
             </div>
           {% endfor %}
         </div>
