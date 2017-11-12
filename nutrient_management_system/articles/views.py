@@ -7,7 +7,7 @@ from django.views.generic import UpdateView, DeleteView
 
 
 def articles(request):
-    all_articles = Article.objects.all()
+    all_articles = Article.objects.all().order_by('-id')
     return render(request, 'articles.html', {'all_articles': all_articles})
 
 

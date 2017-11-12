@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'about_us.apps.AboutUsConfig',
     'articles.apps.ArticlesConfig',
     'drop_a_note.apps.DropANoteConfig',
@@ -124,3 +125,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/user/login'

@@ -63,27 +63,40 @@
                     <div id="{{ nutrient.id }}" class="tab-pane fade">
                       <div class="text-center "><h3>{{ nutrient.name }}</h3>
                       </div>
-                      <div class="col-md-4">
-                        <p>{{ nutrient.avg_intake }} Calories</p>
+                      <div class="row">
+                        <table class="table">
+                          <thead>
+                          <tr>
+                            <th>Avg Intake</th>
+                            <th>Disease</th>
+                            <th>Food</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+
+                          <tr>
+                            <td>{{ nutrient.avg_intake }}</td>
+                            <td>
+                              {% for disease in diseases %}
+                              {% if disease.nutrient == nutrient %}
+                              {{ disease.name }}
+                              {% endif %}
+                              {% endfor %}
+                            </td>
+                            <td>
+                              {% for food in foods %}
+                              {% for nu in food.nutrient.all %}
+                              {% if nu == nutrient %}
+                              {{ food.name }}
+                              {% endif %}
+                              {% endfor %}
+                              {% endfor %}
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
                       </div>
-                      <div class="col-md-4">
-                        <ul>
-                          {% for disease in diseases %}
-                            {% if disease.nutrient == nutrient %}
-                              <li><p>{{ disease.name }}</p></li>
-                            {% endif %}
-                          {% endfor %}
-                        </ul>
-                      </div>
-                      <div class="col-md-4">
-                        <ul>
-                          {% for food in foods %}
-                            {% if food.nutrient == nutrient %}
-                              {{ food.name }},
-                            {% endif %}
-                          {% endfor %}
-                        </ul>
-                      </div>
+
                     </div>
                   {% endfor %}
                 </div>
