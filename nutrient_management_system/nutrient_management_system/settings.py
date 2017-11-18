@@ -27,8 +27,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "chetanyashrimalie5@gmail.com"
-EMAIL_HOST_PASSWORD = 'cenanation'
+EMAIL_HOST_USER = "<Enter Email>"
+EMAIL_HOST_PASSWORD = '<Enter Password>'
 EMAIL_PORT = 587
 
 # Application definition
